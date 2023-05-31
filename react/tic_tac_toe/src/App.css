@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cell {
+    min-width: 5rem;
+    min-height: 5rem;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid #000;
+}
+
+.value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+
+}
+
+.value--visible {
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+.cell:last-child {
+    border-right: none;
+    border-bottom: none;
+}
+
+.cell:focus {
+    outline: none;
+}
+
+.cell:hover {
+    cursor: pointer;
+}
+
+.cell:active {
+    outline: none;
+    border: 1px solid #000;
+
+}
+
+.cell:first-child {
+    border-left: none;
+    border-top: none;
+}
+
+.cell:nth-child(3n) {
+    border-right: none;
+}
+
+.cell:nth-child(-n+3) {
+    border-top: none;
+}
+
+.cell:nth-child(3n+1) {
+    border-left: none;
+}
+
+.cell:nth-child(n+7) {
+    border-bottom: none;
+}
+
+
+.tic-tact-grid {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.winner {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+.reset-button {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #000;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}

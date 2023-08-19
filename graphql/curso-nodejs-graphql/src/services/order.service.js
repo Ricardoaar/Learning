@@ -1,15 +1,13 @@
-const boom = require('@hapi/boom');
-const { models } = require('../db/sequelize');
+const boom = require("@hapi/boom");
+const { models } = require("../db/sequelize");
 
 class OrderService {
-
-  constructor(){
-  }
+  constructor() {}
 
   async create(data) {
     const customer = await models.Customer.findByPk(data.customerId);
     if (!customer) {
-      throw boom.notFound('customer not found');
+      throw boom.notFound("customer not found");
     }
     const newOrder = await models.Order.create(data);
     return newOrder;
@@ -18,11 +16,11 @@ class OrderService {
   async addItem(data) {
     const product = await models.Product.findByPk(data.productId);
     if (!product) {
-      throw boom.notFound('product not found');
+      throw boom.notFound("product not found");
     }
     const order = await models.Order.findByPk(data.orderId);
     if (!order) {
-      throw boom.notFound('order not found');
+      throw boom.notFound("order not found");
     }
     const newItem = await models.OrderProduct.create(data);
     return newItem;
@@ -31,12 +29,12 @@ class OrderService {
   async findByUser(userId) {
     const orders = await models.Order.findAll({
       where: {
-        '$customer.user.id$': userId
+        "$customer.user.id$": userId
       },
       include: [
         {
-          association: 'customer',
-          include: ['user']
+          association: "customer",
+          include: ["user"]
         }
       ]
     });
@@ -47,14 +45,14 @@ class OrderService {
     const order = await models.Order.findByPk(id, {
       include: [
         {
-          association: 'customer',
-          include: ['user']
+          association: "customer",
+          include: ["user"]
         },
-        'items'
+        "items"
       ]
     });
     if (!order) {
-      throw boom.notFound('order not found');
+      throw boom.notFound("order not found");
     }
     return order;
   }
@@ -70,7 +68,6 @@ class OrderService {
     await order.destroy();
     return { id };
   }
-
 }
 
 module.exports = OrderService;

@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
 const id = Joi.number().integer();
 const email = Joi.string().email();
@@ -12,11 +12,11 @@ const createUserDto = Joi.object({
 
 const updateUserDto = Joi.object({
   email: email,
-  role: role,
+  role: role
 });
 
 const getUserDto = Joi.object({
-  id: id.required(),
+  id: id.required()
 });
 
-module.exports = { createUserDto, updateUserDto, getUserDto }
+module.exports = { createUserDto, updateUserDto, getUserDto };

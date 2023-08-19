@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
 const id = Joi.number().integer();
 const name = Joi.string().min(3).max(15);
@@ -15,7 +15,7 @@ const updateCategoryDto = Joi.object({
 });
 
 const getCategoryDto = Joi.object({
-  id: id.required(),
+  id: id.required()
 });
 
-module.exports = { createCategoryDto, updateCategoryDto, getCategoryDto }
+module.exports = { createCategoryDto, updateCategoryDto, getCategoryDto };

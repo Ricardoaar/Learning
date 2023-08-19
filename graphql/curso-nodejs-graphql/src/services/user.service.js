@@ -1,7 +1,7 @@
-const boom = require('@hapi/boom');
-const bcrypt = require('bcrypt');
+const boom = require("@hapi/boom");
+const bcrypt = require("bcrypt");
 
-const { models } = require('../db/sequelize');
+const { models } = require("../db/sequelize");
 
 class UserService {
   constructor() {}
@@ -11,7 +11,7 @@ class UserService {
     const newUser = await models.User.create({
       ...data,
       password: hash,
-      role: "admin",
+      role: "admin"
     });
     delete newUser.dataValues.password;
     return newUser;
@@ -19,7 +19,7 @@ class UserService {
 
   async find() {
     const rta = await models.User.findAll({
-      include: ['customer']
+      include: ["customer"]
     });
     return rta;
   }
@@ -34,7 +34,7 @@ class UserService {
   async findOne(id) {
     const user = await models.User.findByPk(id);
     if (!user) {
-      throw boom.notFound('user not found');
+      throw boom.notFound("user not found");
     }
     return user;
   }

@@ -1,19 +1,19 @@
-const express = require('express');
+const express = require("express");
 
-const OrderService = require('../services/order.service');
-const validatorHandler = require('../middlewares/validator.handler');
+const OrderService = require("../services/order.service");
+const validatorHandler = require("../middlewares/validator.handler");
 const {
   getOrderDto,
   createOrderDto,
-  addItemDto,
-} = require('../dtos/order.dto');
+  addItemDto
+} = require("../dtos/order.dto");
 
 const router = express.Router();
 const service = new OrderService();
 
 router.get(
-  '/:id',
-  validatorHandler(getOrderDto, 'params'),
+  "/:id",
+  validatorHandler(getOrderDto, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -26,8 +26,8 @@ router.get(
 );
 
 router.post(
-  '/',
-  validatorHandler(createOrderDto, 'body'),
+  "/",
+  validatorHandler(createOrderDto, "body"),
   async (req, res, next) => {
     try {
       const body = req.body;
@@ -40,8 +40,8 @@ router.post(
 );
 
 router.post(
-  '/add-item',
-  validatorHandler(addItemDto, 'body'),
+  "/add-item",
+  validatorHandler(addItemDto, "body"),
   async (req, res, next) => {
     try {
       const body = req.body;

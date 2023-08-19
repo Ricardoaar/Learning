@@ -1,21 +1,21 @@
-const { CUSTOMER_TABLE } = require('./../models/customer.model');
+const { CUSTOMER_TABLE } = require("./../models/customer.model");
 
 module.exports = {
-  up: async (queryInterface) => {
+  up: async queryInterface => {
     if (queryInterface.context) {
       queryInterface = queryInterface.context;
     }
     return queryInterface.bulkInsert(CUSTOMER_TABLE, [
       {
-        name: 'Juanita',
-        last_name: 'Perez',
-        phone: '7830601',
+        name: "Juanita",
+        last_name: "Perez",
+        phone: "7830601",
         user_id: 2,
         created_at: new Date()
-      },
+      }
     ]);
   },
-  down: (queryInterface) => {
+  down: queryInterface => {
     if (queryInterface.context) {
       queryInterface = queryInterface.context;
     }

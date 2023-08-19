@@ -1,7 +1,7 @@
-const { ORDER_PRODUCT_TABLE } = require('../models/order-product.model');
+const { ORDER_PRODUCT_TABLE } = require("../models/order-product.model");
 
 module.exports = {
-  up: async (queryInterface) => {
+  up: async queryInterface => {
     if (queryInterface.context) {
       queryInterface = queryInterface.context;
     }
@@ -17,10 +17,10 @@ module.exports = {
         order_id: 1,
         product_id: 2,
         created_at: new Date()
-      },
+      }
     ]);
   },
-  down: (queryInterface) => {
+  down: queryInterface => {
     if (queryInterface.context) {
       queryInterface = queryInterface.context;
     }

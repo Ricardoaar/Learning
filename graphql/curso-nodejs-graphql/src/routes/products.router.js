@@ -1,14 +1,20 @@
-const express = require('express');
+const express = require("express");
 
-const ProductsService = require('./../services/product.service');
-const validatorHandler = require('./../middlewares/validator.handler');
-const { createProductDto, updateProductDto, getProductDto, queryProductDto } = require('../dtos/product.dto');
+const ProductsService = require("./../services/product.service");
+const validatorHandler = require("./../middlewares/validator.handler");
+const {
+  createProductDto,
+  updateProductDto,
+  getProductDto,
+  queryProductDto
+} = require("../dtos/product.dto");
 
 const router = express.Router();
 const service = new ProductsService();
 
-router.get('/',
-  validatorHandler(queryProductDto, 'query'),
+router.get(
+  "/",
+  validatorHandler(queryProductDto, "query"),
   async (req, res, next) => {
     try {
       const products = await service.find(req.query);
@@ -19,8 +25,9 @@ router.get('/',
   }
 );
 
-router.get('/:id',
-  validatorHandler(getProductDto, 'params'),
+router.get(
+  "/:id",
+  validatorHandler(getProductDto, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -32,8 +39,9 @@ router.get('/:id',
   }
 );
 
-router.post('/',
-  validatorHandler(createProductDto, 'body'),
+router.post(
+  "/",
+  validatorHandler(createProductDto, "body"),
   async (req, res, next) => {
     try {
       const body = req.body;
@@ -45,9 +53,10 @@ router.post('/',
   }
 );
 
-router.patch('/:id',
-  validatorHandler(getProductDto, 'params'),
-  validatorHandler(updateProductDto, 'body'),
+router.patch(
+  "/:id",
+  validatorHandler(getProductDto, "params"),
+  validatorHandler(updateProductDto, "body"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -60,13 +69,14 @@ router.patch('/:id',
   }
 );
 
-router.delete('/:id',
-  validatorHandler(getProductDto, 'params'),
+router.delete(
+  "/:id",
+  validatorHandler(getProductDto, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
       await service.delete(id);
-      res.status(201).json({id});
+      res.status(201).json({ id });
     } catch (error) {
       next(error);
     }

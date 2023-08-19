@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
 const id = Joi.number().integer();
 const name = Joi.string().min(3).max(15);
@@ -18,7 +18,7 @@ const createProductDto = Joi.object({
   price: price.required(),
   description: description.required(),
   image: image.required(),
-  categoryId: categoryId.required(),
+  categoryId: categoryId.required()
 });
 
 const updateProductDto = Joi.object({
@@ -30,7 +30,7 @@ const updateProductDto = Joi.object({
 });
 
 const getProductDto = Joi.object({
-  id: id.required(),
+  id: id.required()
 });
 
 const queryProductDto = Joi.object({
@@ -38,10 +38,15 @@ const queryProductDto = Joi.object({
   offset,
   price,
   price_min,
-  price_max: Joi.when('price_min', {
+  price_max: Joi.when("price_min", {
     is: Joi.exist(),
-    then: price_max.required(),
+    then: price_max.required()
   })
 });
 
-module.exports = { createProductDto, updateProductDto, getProductDto, queryProductDto }
+module.exports = {
+  createProductDto,
+  updateProductDto,
+  getProductDto,
+  queryProductDto
+};

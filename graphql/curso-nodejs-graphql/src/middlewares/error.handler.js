@@ -1,7 +1,7 @@
-const { ValidationError } = require('sequelize');
-const { config } = require('./../config/config');
+const { ValidationError } = require("sequelize");
+const { config } = require("./../config/config");
 
-function logErrors (err, req, res, next) {
+function logErrors(err, req, res, next) {
   if (config.isDev) {
     console.error(err);
   }
@@ -11,7 +11,7 @@ function logErrors (err, req, res, next) {
 function errorHandler(err, req, res, next) {
   res.status(500).json({
     message: err.message,
-    stack: err.stack,
+    stack: err.stack
   });
 }
 
@@ -35,5 +35,4 @@ function ormErrorHandler(err, req, res, next) {
   next(err);
 }
 
-
-module.exports = { logErrors, errorHandler, boomErrorHandler, ormErrorHandler }
+module.exports = { logErrors, errorHandler, boomErrorHandler, ormErrorHandler };

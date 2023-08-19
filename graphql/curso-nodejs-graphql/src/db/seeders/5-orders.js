@@ -1,7 +1,7 @@
-const { ORDER_TABLE } = require('./../models/order.model');
+const { ORDER_TABLE } = require("./../models/order.model");
 
 module.exports = {
-  up: async (queryInterface) => {
+  up: async queryInterface => {
     if (queryInterface.context) {
       queryInterface = queryInterface.context;
     }
@@ -9,10 +9,10 @@ module.exports = {
       {
         customer_id: 1,
         created_at: new Date()
-      },
+      }
     ]);
   },
-  down: (queryInterface) => {
+  down: queryInterface => {
     if (queryInterface.context) {
       queryInterface = queryInterface.context;
     }

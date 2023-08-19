@@ -1,11 +1,12 @@
-const { Strategy } = require('passport-local');
+const { Strategy } = require("passport-local");
 
-const AuthService = require('./../../../services/auth.service');
+const AuthService = require("./../../../services/auth.service");
 const service = new AuthService();
 
-const LocalStrategy = new Strategy({
-    usernameField: 'email',
-    passwordField: 'password'
+const LocalStrategy = new Strategy(
+  {
+    usernameField: "email",
+    passwordField: "password"
   },
   async (email, password, done) => {
     try {

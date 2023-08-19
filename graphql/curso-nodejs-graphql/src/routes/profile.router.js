@@ -1,15 +1,16 @@
-const express = require('express');
-const passport = require('passport');
+const express = require("express");
+const passport = require("passport");
 
-const OrderService = require('../services/order.service');
-const UserService = require('../services/user.service');
+const OrderService = require("../services/order.service");
+const UserService = require("../services/user.service");
 
 const router = express.Router();
 const orderService = new OrderService();
 const userService = new UserService();
 
-router.get('/my-orders',
-  passport.authenticate('jwt', {session: false}),
+router.get(
+  "/my-orders",
+  passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
       const user = req.user;
@@ -21,8 +22,9 @@ router.get('/my-orders',
   }
 );
 
-router.get('/my-user',
-  passport.authenticate('jwt', {session: false}),
+router.get(
+  "/my-user",
+  passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
       const userPayload = req.user;
